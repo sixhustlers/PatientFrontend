@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_login/flutter_login.dart';
+import 'package:patientfrontend/colors/colors.dart';
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -8,74 +8,107 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  //const LoginScreen({Key? key}) : super(key: key);
-
- // Duration get loginTime => Duration(milliseconds: timeDilation.ceil() * 2250);
-
-  Future<String?> _loginUser(LoginData data) async{
-    String?name;
-    return name;
-
-    }
-
-
-  Future<String?> _signupUser(SignupData data) async{
-    String?name;
-    return name;
-  }
-
-  Future<String?> _recoverPassword(String name) async{
-    String?name;
-    return name;
-  }
-
-  Future<String?> _signupConfirm(String error, LoginData data)async {
-    String?name;
-    return name;
-  }
+  TextEditingController t1=TextEditingController();
+  TextEditingController t2=TextEditingController();
+  bool selected=false;
+  //decoration: InputDecoration(hintText: "Enter email",hintStyle: TextStyle(color: Colors.white),icon: Icon(Icons.account_circle_rounded,color: Colors.white,),focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white),),border: InputBorder.none)
   @override
   Widget build(BuildContext context) {
-    return FlutterLogin(onLogin:  (loginData) {
-      debugPrint('Login info');
-      debugPrint('Name: ${loginData.name}');
-      debugPrint('Password: ${loginData.password}');
-      return _loginUser(loginData);
-    }, onRecoverPassword:(name) {
-      debugPrint('Recover password info');
-      debugPrint('Name: $name');
-      return _recoverPassword(name);
-      // Show new password dialog
-    },
-    onSignup: (signupData) {
-    debugPrint('Signup info');
-    debugPrint('Name: ${signupData.name}');
-    debugPrint('Password: ${signupData.password}');
+    return Scaffold(
+      backgroundColor: loginpagecolor,
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Welcome",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 56),),
+            SizedBox(height: 20,),
+            Text("Glad to see You!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 32)),
+            SizedBox(height: 25,),
+            Align(alignment: Alignment.topLeft,child: Text("Email Address",style: TextStyle(color:Colors.white,fontSize: 20,fontWeight: FontWeight.bold)),),
+            SizedBox(height: 15,),
+            TextField(
+              controller: t1,
+              decoration: InputDecoration(
+                hintStyle: TextStyle(color:loginpagecolor),
+                fillColor: Colors.white,
+                filled: true,
+                hintText: "medic@domain.com",
+                prefixIcon: Icon(Icons.email, color: loginpagecolor),
 
-    signupData.additionalSignupData?.forEach((key, value) {
-    debugPrint('$key: $value');
-    });},
-      title: "UHI",
-      userType: LoginUserType.phone,
-      theme: LoginTheme(cardTheme: const CardTheme(
-        color:Colors.white,
-        ),accentColor: Colors.white),
-      userValidator: (value) {
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+              ),
 
-        if (value != null ||
-            value!.length < 10 ) {
-          return "This isn't a valid phone number";
-        }
-        return null;
-      },
-      passwordValidator: (value) {
-        if (value!.isEmpty) {
-          return 'Password is empty';
-        }
-        else if(value.length<6){
-          return 'too week password cannot be accepted';
-        }
-        return null;
-      },
+            ),
+            SizedBox(height: 15,),
+            Align(alignment: Alignment.topLeft,child: Text("Full Name",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold))),
+            SizedBox(height: 15,),
+            TextField(
+              controller: t2,
+              decoration: InputDecoration(
+                hintStyle: TextStyle(color: loginpagecolor),
+                fillColor: Colors.white,
+                filled: true,
+                hintText: "Full Name",
+                prefixIcon: Icon(Icons.account_circle, color: loginpagecolor),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+              ),
+            ),
+
+            SizedBox(height: 15,),
+            Row(
+              children: [
+                Checkbox(value: selected, onChanged: (value){
+
+                  setState(() {
+                    selected=!selected;
+                  }
+                  );
+                },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0), // Adjust the radius as needed
+                  ),
+                  fillColor: MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states) {
+                      return selected ?Colors.green : Colors.white; // Adjust the colors as needed
+                    },
+                  ),
+                ),
+                SizedBox(width: 3,),
+                Text("I agree to Privacy Policy.",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20)),
+              ],
+            ),
+            SizedBox(height: 20,),
+            MaterialButton(
+              elevation: 2.5,
+              onPressed: (){
+              //go to next page
+              if(t1.text.isNotEmpty&&t2.text.isNotEmpty&&selected){
+                Navigator.pushNamed(context, '/otp');
+              }
+            },color: Colors.white,textColor: loginpagecolor,child: Text("Submit",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),minWidth: MediaQuery.of(context).size.width/2.5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0), // Set the border radius
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
+
