@@ -20,6 +20,7 @@ class _LoginState extends State<Login> {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text("Welcome",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 56),),
             SizedBox(height: 20,),
@@ -30,11 +31,11 @@ class _LoginState extends State<Login> {
             TextField(
               controller: t1,
               decoration: InputDecoration(
-                hintStyle: TextStyle(color:loginpagecolor),
+                hintStyle: TextStyle(color:Color(0XFF5D5D5D)),
                 fillColor: Colors.white,
                 filled: true,
                 hintText: "medic@domain.com",
-                prefixIcon: Icon(Icons.email, color: loginpagecolor),
+                prefixIcon: Icon(Icons.email, color: Color(0XFF5D5D5D)),
 
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -53,11 +54,11 @@ class _LoginState extends State<Login> {
             TextField(
               controller: t2,
               decoration: InputDecoration(
-                hintStyle: TextStyle(color: loginpagecolor),
+                hintStyle: TextStyle(color: Color(0XFF5D5D5D)),
                 fillColor: Colors.white,
                 filled: true,
                 hintText: "Full Name",
-                prefixIcon: Icon(Icons.account_circle, color: loginpagecolor),
+                prefixIcon: Icon(Icons.account_circle, color: Color(0XFF5D5D5D)),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.circular(12.0),
@@ -102,7 +103,7 @@ class _LoginState extends State<Login> {
               }
             },color: Colors.white,textColor: loginpagecolor,child: Text("Submit",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),minWidth: MediaQuery.of(context).size.width/2.5,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0), // Set the border radius
+                borderRadius: BorderRadius.circular(7.5), // Set the border radius
               ),
             )
           ],
