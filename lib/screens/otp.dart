@@ -15,15 +15,16 @@ class _OtpState extends State<Otp> {
   // Function to handle OTP submission
   void onOtpSubmitted() {
     if (verificationCode.length == 4) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("Verification Code"),
-            content: Text('Code entered is $verificationCode'),
-          );
-        },
-      );
+      // showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return AlertDialog(
+      //       title: Text("Verification Code"),
+      //       content: Text('Code entered is $verificationCode'),
+      //     );
+      //   },
+      // );
+      Navigator.pushNamed(context, '/medical/add');
     }
   }
 
@@ -60,110 +61,112 @@ class _OtpState extends State<Otp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: loginpagecolor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(height: MediaQuery.of(context).size.height / 6),
-            SizedBox(height: 10),
-            Align(
-              child: Text(
-                "Enter OTP",
-                style: TextStyle(color: Colors.white, fontSize: 28),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: loginpagecolor,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(height: MediaQuery.of(context).size.height / 6),
+              SizedBox(height: 10),
+              Align(
+                child: Text(
+                  "Enter OTP",
+                  style: TextStyle(color: Colors.white, fontSize: 28),
+                ),
+                alignment: Alignment.topCenter,
               ),
-              alignment: Alignment.topCenter,
-            ),
-            SizedBox(height: 20),
-            Align(
-              child: Text(
-                "Please Enter the OTP sent to your mail/phone number.",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.normal,
+              SizedBox(height: 20),
+              Align(
+                child: Text(
+                  "Please Enter the OTP sent to your mail/phone number.",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  DigitBox(verificationCode.length > 0 ? verificationCode[0] : ""),
-                  DigitBox(verificationCode.length > 1 ? verificationCode[1] : ""),
-                  DigitBox(verificationCode.length > 2 ? verificationCode[2] : ""),
-                  DigitBox(verificationCode.length > 3 ? verificationCode[3] : ""),
-                ],
-              ),
-            ),
-            SizedBox(height: 10,),
-            TextButton(
-              onPressed: resendOtp,
-              child: Text(
-                "Didn't Get OTP? Resend.",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    DigitBox(verificationCode.length > 0 ? verificationCode[0] : ""),
+                    DigitBox(verificationCode.length > 1 ? verificationCode[1] : ""),
+                    DigitBox(verificationCode.length > 2 ? verificationCode[2] : ""),
+                    DigitBox(verificationCode.length > 3 ? verificationCode[3] : ""),
+                  ],
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomButton("1", onButtonPressed),
-                  CustomButton("2", onButtonPressed),
-                  CustomButton("3", onButtonPressed),
-                ],
+              SizedBox(height: 10,),
+              TextButton(
+                onPressed: resendOtp,
+                child: Text(
+                  "Didn't Get OTP? Resend.",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomButton("4", onButtonPressed),
-                  CustomButton("5", onButtonPressed),
-                  CustomButton("6", onButtonPressed),
-                ],
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomButton("1", onButtonPressed),
+                    CustomButton("2", onButtonPressed),
+                    CustomButton("3", onButtonPressed),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomButton("7", onButtonPressed),
-                  CustomButton("8", onButtonPressed),
-                  CustomButton("9", onButtonPressed),
-                ],
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomButton("4", onButtonPressed),
+                    CustomButton("5", onButtonPressed),
+                    CustomButton("6", onButtonPressed),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(width: 50,),
-                  CustomButton("0", onButtonPressed),
-                  CustomButton("<", onBackspacePressed), // Backspace button
-                ],
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomButton("7", onButtonPressed),
+                    CustomButton("8", onButtonPressed),
+                    CustomButton("9", onButtonPressed),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 20),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(width: 50,),
+                    CustomButton("0", onButtonPressed),
+                    CustomButton("<", onBackspacePressed), // Backspace button
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
 
-          ],
+            ],
+          ),
         ),
       ),
     );
