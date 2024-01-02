@@ -1,6 +1,8 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:patientfrontend/screens/Login.dart';
+import 'package:patientfrontend/screens/addMedical.dart';
 import 'package:patientfrontend/screens/otp.dart';
 
 void main() {
@@ -10,6 +12,7 @@ void main() {
     routes: {
       '/': (context) => Login(),
       '/otp':(context)=>Otp(),
+      '/medical/add':(context)=>AddMedical(),
     },
   ));
 }
