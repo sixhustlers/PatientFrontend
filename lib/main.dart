@@ -1,9 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:patientfrontend/screens/Login.dart';
 import 'package:patientfrontend/screens/addMedical.dart';
 import 'package:patientfrontend/screens/otp.dart';
+import 'package:patientfrontend/screens/profileForm.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -13,6 +12,7 @@ void main() {
       '/': (context) => Login(),
       '/otp':(context)=>Otp(),
       '/medical/add':(context)=>AddMedical(),
+      '/detailsform' : (context) => ProfileForm()
     },
   ));
 }
