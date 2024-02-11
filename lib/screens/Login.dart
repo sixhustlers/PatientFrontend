@@ -22,7 +22,7 @@ class _LoginState extends State<Login> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Welcome",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 56),),
+            Text("Welcome",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 48),),
             SizedBox(height: 20,),
             Text("Glad to see You!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 32)),
             SizedBox(height: 25,),

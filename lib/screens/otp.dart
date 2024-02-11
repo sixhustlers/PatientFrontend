@@ -24,7 +24,7 @@ class _OtpState extends State<Otp> {
       //     );
       //   },
       // );
-      Navigator.pushNamed(context, '/medical/add');
+      Navigator.pushNamed(context, '/medical/home');
     }
   }
 
